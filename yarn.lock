@@ -2253,6 +2253,11 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+justified-layout@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/justified-layout/-/justified-layout-4.1.0.tgz#0584091b45e69f19ac97a54539f0a03eebe7bcfe"
+  integrity sha512-M5FimNMXgiOYerVRGsXZ2YK9YNCaTtwtYp7Hb2308U1Q9TXXHx5G0p08mcVR5O53qf8bWY4NJcPBxE6zuayXSg==
+
 keyv@^4.5.3:
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.5.4.tgz#a879a99e29452f942439f2a405e3af8b31d4de93"

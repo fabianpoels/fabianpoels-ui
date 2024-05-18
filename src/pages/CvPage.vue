@@ -1,9 +1,9 @@
 <template>
-  <router-view />
+  <div></div>
 </template>
 
 <script setup>
 defineOptions({
-  name: 'App',
+  name: 'CvPage',
 })
 </script>

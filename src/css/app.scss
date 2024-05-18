@@ -1,1 +1,19 @@
 // app global css in SCSS form
+body {
+  background-color: $dark-page;
+}
+
+#header {
+  background-color: $dark-page;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.nav-icon {
+  color: $light-grey;
+  opacity: 70%;
+}
+
+.nav-icon:hover {
+  opacity: 100%;
+}
