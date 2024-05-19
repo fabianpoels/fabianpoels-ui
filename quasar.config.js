@@ -5,6 +5,7 @@
 
 import { configure } from 'quasar/wrappers'
 import { fileURLToPath } from 'node:url'
+import path from 'node:path'
 
 export default configure((ctx) => {
   return {
@@ -56,7 +57,11 @@ export default configure((ctx) => {
       // polyfillModulePreload: true,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf(viteConf) {
+        Object.assign(viteConf.resolve.alias, {
+          '@': path.join(__dirname, './src'),
+        })
+      },
       // viteVuePluginOptions: {},
 
       vitePlugins: [

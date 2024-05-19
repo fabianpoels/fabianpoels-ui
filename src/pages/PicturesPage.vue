@@ -1,9 +1,13 @@
 <template>
-  <div id="galleryContainer" ref="galleryContainer" style="position: relative">
+  <div
+    id="galleryContainer"
+    ref="galleryContainer"
+    :style="`position: relative; height: ${imageGeometry.containerHeight}px`"
+  >
     <q-resize-observer @resize="onResize" />
     <div
       class="item"
-      v-for="(box, index) in imageGeometry"
+      v-for="(box, index) in imageGeometry.boxes"
       :key="index"
       :style="box.style"
       @click="startCarousel(index)"
@@ -31,8 +35,10 @@
           no-native-menu
           fit="scale-down"
           :src="`images/${image.name}.jpg`"
-          style="max-width: 100%; max-height: 100%"
+          style="max-width: 100%; max-height: calc(100% - 40px)"
+          :alt="image.description"
         />
+        <div class="description">{{ image.description }}</div>
       </q-carousel-slide>
       <template v-slot:control>
         <q-carousel-control position="top-right" :offset="[18, 18]">
@@ -67,14 +73,19 @@ function onResize(val) {
 }
 
 const imageGeometry = computed(() => {
-  if (!galleryContainer.value) return
+  if (!galleryContainer.value) {
+    return {
+      containerHeight: 0,
+      boxes: [],
+    }
+  }
   const geometry = justifiedLayout(images, {
     containerWidth: width.value,
     containerPadding: 20,
     boxSpacing: 20,
     targetRowHeight: 270,
   })
-  return geometry.boxes.map((element, index) => {
+  const boxes = geometry.boxes.map((element, index) => {
     const image = images[index]
     return {
       image: image,
@@ -89,9 +100,20 @@ const imageGeometry = computed(() => {
       },
     }
   })
+
+  return {
+    containerHeight: geometry.containerHeight,
+    boxes,
+  }
 })
 
 const images = [
+  {
+    name: 'fabianpoels_landscape_dolomites_storm',
+    description: 'Storm in the dolomites',
+    width: 809,
+    height: 540,
+  },
   {
     name: 'fabianpoels_climbing_finale_lubna',
     description: "Lubna, Grotta dell'Edera, Finale (ITALY)",
@@ -169,12 +191,6 @@ const images = [
     width: 361,
     height: 540,
   },
-  {
-    name: 'fabianpoels_landscape_dolomites_storm',
-    description: 'Storm in the dolomites',
-    width: 809,
-    height: 540,
-  },
 ]
 </script>
 <style>
@@ -184,5 +200,13 @@ const images = [
 
 #carousel {
   background-color: #000;
+}
+
+.description {
+  color: #ebebeb;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
 }
 </style>
