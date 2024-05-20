@@ -10,7 +10,7 @@
       v-for="(box, index) in imageGeometry.boxes"
       :key="index"
       :style="box.style"
-      @click="startCarousel(index)"
+      @click="startFancybox(index)"
     >
       <img
         :src="`images/${box.image.name}_thumb.jpg`"
@@ -19,92 +19,17 @@
         :height="box.height"
       />
     </div>
-    <q-carousel
-      fullscreen
-      animated
-      arrows
-      infinite
-      swipeable
-      padding
-      id="carousel"
-      v-model="slide"
-      v-if="showCarousel"
-    >
-      <q-carousel-slide v-for="(image, index) in images" :key="index" :name="index">
-        <q-img
-          no-native-menu
-          fit="scale-down"
-          :src="`images/${image.name}.jpg`"
-          style="max-width: 100%; max-height: calc(100% - 40px)"
-          :alt="image.description"
-        />
-        <div class="description">{{ image.description }}</div>
-      </q-carousel-slide>
-      <template v-slot:control>
-        <q-carousel-control position="top-right" :offset="[18, 18]">
-          <q-btn round text-color="dark-grey" icon="close" @click="showCarousel = false" />
-        </q-carousel-control>
-      </template>
-    </q-carousel>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import justifiedLayout from 'justified-layout'
+import { Fancybox } from '@fancyapps/ui'
+import '@fancyapps/ui/dist/fancybox/fancybox.css'
 
 defineOptions({
   name: 'PicturesPage',
-})
-
-const galleryContainer = ref(null)
-const width = ref(0)
-
-const slide = ref(1)
-const showCarousel = ref(false)
-
-function startCarousel(index) {
-  slide.value = index
-  showCarousel.value = true
-}
-
-function onResize(val) {
-  width.value = val.width
-}
-
-const imageGeometry = computed(() => {
-  if (!galleryContainer.value) {
-    return {
-      containerHeight: 0,
-      boxes: [],
-    }
-  }
-  const geometry = justifiedLayout(images, {
-    containerWidth: width.value,
-    containerPadding: 20,
-    boxSpacing: 20,
-    targetRowHeight: 270,
-  })
-  const boxes = geometry.boxes.map((element, index) => {
-    const image = images[index]
-    return {
-      image: image,
-      height: element.height,
-      width: element.width,
-      style: {
-        height: `${element.height}px`,
-        width: `${element.width}px`,
-        top: `${element.top}px`,
-        left: `${element.left}px`,
-        position: 'absolute',
-      },
-    }
-  })
-
-  return {
-    containerHeight: geometry.containerHeight,
-    boxes,
-  }
 })
 
 const images = [
@@ -192,6 +117,68 @@ const images = [
     height: 540,
   },
 ]
+
+const fancyboxImages = images.map((i) => ({
+  src: `images/${i.name}.jpg`,
+  thumb: `images/${i.name}_thumb.jpg`,
+  caption: i.description,
+}))
+
+function startFancybox(index) {
+  new Fancybox(fancyboxImages, {
+    startIndex: index,
+    Thumbs: false,
+    Toolbar: {
+      display: {
+        left: [],
+        middle: [],
+        right: ['fullscreen', 'close'],
+      },
+    },
+  })
+}
+
+const galleryContainer = ref(null)
+const width = ref(0)
+
+function onResize(val) {
+  width.value = val.width
+}
+
+const imageGeometry = computed(() => {
+  if (!galleryContainer.value) {
+    return {
+      containerHeight: 0,
+      boxes: [],
+    }
+  }
+  const geometry = justifiedLayout(images, {
+    containerWidth: width.value,
+    containerPadding: 20,
+    boxSpacing: 20,
+    targetRowHeight: 270,
+  })
+  const boxes = geometry.boxes.map((element, index) => {
+    const image = images[index]
+    return {
+      image: image,
+      height: element.height,
+      width: element.width,
+      style: {
+        height: `${element.height}px`,
+        width: `${element.width}px`,
+        top: `${element.top}px`,
+        left: `${element.left}px`,
+        position: 'absolute',
+      },
+    }
+  })
+
+  return {
+    containerHeight: geometry.containerHeight,
+    boxes,
+  }
+})
 </script>
 <style>
 .item {
@@ -208,5 +195,22 @@ const images = [
   display: flex;
   justify-content: center;
   padding-top: 20px;
+}
+
+.fancybox__container {
+  z-index: 3000;
+}
+
+.fancybox__backdrop {
+  background: #000;
+}
+
+.fancybox__caption {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+}
+
+.fancybox-image {
+  pointer-events: none;
 }
 </style>
