@@ -1,7 +1,7 @@
 <template>
   <div class="routes relative-position">
     <q-radio v-model="ascentStore.stats.allTime" :val="true" label="All time" dark />
-    <q-radio v-model="ascentStore.stats.allTime" :val="false" label="Custom" dark />
+    <q-radio v-model="ascentStore.stats.allTime" :val="false" label="Yearly" dark />
     <q-item class="q-my-md">
       <q-item-section side class="year">2011</q-item-section>
       <q-item-section>
