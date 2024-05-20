@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+import { Notify } from 'quasar'
 import { onMounted, ref } from 'vue'
 import { useAscentStore } from '@/stores/ascentStore'
 const ascentStore = useAscentStore()
@@ -54,9 +55,25 @@ defineOptions({
 const loading = ref(false)
 
 onMounted(async () => {
-  // loading.value = true
-  await ascentStore.fetchAscents()
-  // // loading.value = false
+  loading.value = true
+  try {
+    await ascentStore.fetchAscents()
+  } catch (e) {
+    console.error(e)
+    Notify.create({
+      message: 'Error loading data',
+      color: 'negative',
+      position: 'top',
+      actions: [
+        {
+          icon: 'close',
+          color: 'white',
+          round: true,
+        },
+      ],
+    })
+  }
+  loading.value = false
 })
 
 function compileLocation(a) {

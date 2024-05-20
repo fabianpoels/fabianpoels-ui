@@ -40,6 +40,7 @@ export const useAscentStore = defineStore('report', {
   actions: {
     async fetchAscents() {
       const { data } = await api.get('/public/ascents')
+      if (!Array.isArray(data)) return
       this.ascents = data.sort((a, b) => b.number - a.number)
     },
   },
