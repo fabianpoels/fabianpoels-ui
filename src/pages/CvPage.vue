@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-timeline dark layout="comfortable" side="right" class="q-pa-xl timeline">
+    <q-timeline dark :layout="layout" side="right" class="q-pa-xl timeline">
       <q-timeline-entry title="Summary" icon="summarize">
         <div>
           Thorough knowledge and affinity with modern day full-stack software/web development.
@@ -197,8 +197,15 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useQuasar } from 'quasar'
+const $q = useQuasar()
 defineOptions({
   name: 'CvPage',
+})
+
+const layout = computed(() => {
+  return $q.screen.lt.sm ? 'dense' : 'comfortable'
 })
 </script>
 <style scoped>

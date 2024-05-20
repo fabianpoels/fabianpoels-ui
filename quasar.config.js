@@ -51,7 +51,7 @@ export default configure((ctx) => {
 
       // publicPath: '/',
       // analyze: true,
-      env: dotenv.config({ path: '.env.production' }),
+      env: dotenv.config({ path: '.env.production' }).parsed,
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
