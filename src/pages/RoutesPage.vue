@@ -1,26 +1,31 @@
 <template>
   <div class="routes relative-position">
-    <q-radio v-model="ascentStore.stats.allTime" :val="true" label="All time" dark />
-    <q-radio v-model="ascentStore.stats.allTime" :val="false" label="Yearly" dark />
-    <q-item class="q-my-md">
-      <q-item-section side class="year">2011</q-item-section>
-      <q-item-section>
-        <q-slider
-          v-model="ascentStore.stats.year"
-          :min="2011"
-          :max="2024"
-          :step="1"
-          snap
-          :markers="1"
-          label-always
-          selection-color="transparent"
-          :disable="ascentStore.stats.allTime"
-        />
-      </q-item-section>
-      <q-item-section side class="year">2024</q-item-section>
-    </q-item>
     <q-separator dark />
-    <q-expansion-item icon="fa-solid fa-chart-simple" label="Statistics" default-opened>
+    <q-expansion-item icon="fa-solid fa-filter" label="Filter">
+      <div class="q-my-md">
+        <q-radio v-model="ascentStore.stats.allTime" :val="true" label="All time" dark />
+        <q-radio v-model="ascentStore.stats.allTime" :val="false" label="Yearly" dark />
+        <q-item class="q-my-md">
+          <q-item-section side class="year">2011</q-item-section>
+          <q-item-section>
+            <q-slider
+              v-model="ascentStore.stats.year"
+              :min="2011"
+              :max="2024"
+              :step="1"
+              snap
+              :markers="1"
+              label-always
+              selection-color="transparent"
+              :disable="ascentStore.stats.allTime"
+            />
+          </q-item-section>
+          <q-item-section side class="year">2024</q-item-section>
+        </q-item>
+      </div>
+    </q-expansion-item>
+    <q-separator dark />
+    <q-expansion-item icon="fa-solid fa-chart-simple" label="Statistics">
       <ascents-chart />
     </q-expansion-item>
     <q-separator dark class="q-mb-md" />

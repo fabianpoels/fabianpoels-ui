@@ -1,6 +1,6 @@
 <template>
   <q-card class="dark-bg q-my-md q-px-md">
-    <div class="q-my-md">Total: {{ totalAscents }}</div>
+    <div class="q-my-md">Total: {{ ascentStore.filteredAscents.length }}</div>
     <Bar id="ascents-chart" class="dark-bg" :options="chartOptions" :data="chartData" />
   </q-card>
 </template>
@@ -13,10 +13,6 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-const totalAscents = computed(() =>
-  Object.values(ascentStore.ascentsPerGrade).reduce((total, val) => total + val.total, 0)
-)
 
 const chartOptions = computed(() => {
   const max = Object.values(ascentStore.ascentsPerGrade).reduce(
