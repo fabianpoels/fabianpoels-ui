@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-timeline dark :layout="layout" side="right" class="q-pa-xl timeline">
+    <q-timeline dark :layout="layout" side="right" class="q-pa-md timeline">
       <q-timeline-entry title="Summary" icon="summarize">
         <div>
           Thorough knowledge and affinity with modern day full-stack software/web development.

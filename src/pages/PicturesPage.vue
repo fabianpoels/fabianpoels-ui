@@ -3,6 +3,7 @@
     id="galleryContainer"
     ref="galleryContainer"
     :style="`position: relative; height: ${imageGeometry.containerHeight}px`"
+    class="p-mb-lg"
   >
     <q-resize-observer @resize="onResize" />
     <div
@@ -24,6 +25,8 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useQuasar } from 'quasar'
+const $q = useQuasar()
 import justifiedLayout from 'justified-layout'
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
@@ -145,7 +148,16 @@ function onResize(val) {
   width.value = val.width
 }
 
+const rowHeight = computed(() => {
+  return $q.screen.lt.sm ? 100 : 270
+})
+
+const spacing = computed(() => {
+  return $q.screen.lt.sm ? 10 : 20
+})
+
 const imageGeometry = computed(() => {
+  console.log(rowHeight)
   if (!galleryContainer.value) {
     return {
       containerHeight: 0,
@@ -154,9 +166,9 @@ const imageGeometry = computed(() => {
   }
   const geometry = justifiedLayout(images, {
     containerWidth: width.value,
-    containerPadding: 20,
-    boxSpacing: 20,
-    targetRowHeight: 270,
+    containerPadding: spacing.value,
+    boxSpacing: spacing.value,
+    targetRowHeight: rowHeight.value,
   })
   const boxes = geometry.boxes.map((element, index) => {
     const image = images[index]
@@ -201,8 +213,9 @@ const imageGeometry = computed(() => {
   z-index: 3000;
 }
 
-.fancybox__backdrop {
-  background: #000;
+.fancybox__backdrop,
+.fancybox__footer {
+  background: #000 !important;
 }
 
 .fancybox__caption {

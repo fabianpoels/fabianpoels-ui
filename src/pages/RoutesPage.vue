@@ -24,7 +24,7 @@
       <ascents-chart />
     </q-expansion-item>
     <q-separator dark class="q-mb-md" />
-    <table>
+    <table class="q-mb-lg">
       <tr v-for="ascent in ascentStore.filteredAscents" :key="ascent.number">
         <td class="flag-cell">
           <div :class="`flag fi fis fi-${ascent.countryCode}`" />

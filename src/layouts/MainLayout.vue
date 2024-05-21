@@ -1,15 +1,20 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header id="header" class="bg-dark-page">
+    <q-header id="header" class="bg-dark-page q-px-lg">
       <div id="nav">
-        <router-link :to="{ name: 'pictures' }" class="link">
-          <q-icon name="fa-solid fa-camera" class="nav-icon" />
+        <router-link :to="{ name: 'pictures' }" class="q-mr-lg">
+          <q-icon
+            name="fa-solid fa-camera"
+            size="xl"
+            class="nav-icon"
+            :class="{ small: $q.screen.lt.sm }"
+          />
         </router-link>
-        <router-link :to="{ name: 'routes' }" class="link">
-          <q-icon name="fa-solid fa-mountain" class="nav-icon" />
+        <router-link :to="{ name: 'routes' }" class="q-mr-lg">
+          <q-icon name="fa-solid fa-mountain" size="xl" class="nav-icon" />
         </router-link>
-        <router-link :to="{ name: 'cv' }" class="link">
-          <q-icon name="fa-solid fa-code" class="nav-icon" />
+        <router-link :to="{ name: 'cv' }" class="q-mr-lg">
+          <q-icon name="fa-solid fa-code" size="xl" class="nav-icon" />
         </router-link>
       </div>
     </q-header>
@@ -29,17 +34,18 @@
 </template>
 
 <script setup>
+import { useQuasar } from 'quasar'
+const $q = useQuasar()
+
 defineOptions({
   name: 'MainLayout',
 })
 </script>
 <style>
 #header {
-  height: 134px;
+  height: 110px;
   display: flex;
   justify-content: space-between;
-  padding-left: 35px;
-  padding-right: 35px;
 }
 
 #nav {
@@ -57,12 +63,7 @@ defineOptions({
   text-align: right;
 }
 
-.link {
-  margin-right: 48px;
-}
-
 .nav-icon {
-  font-size: 64px;
   opacity: 70%;
 }
 

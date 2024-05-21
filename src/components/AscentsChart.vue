@@ -1,5 +1,5 @@
 <template>
-  <q-card class="dark-bg q-my-md">
+  <q-card class="dark-bg q-my-md q-px-md">
     <div class="q-my-md">Total: {{ totalAscents }}</div>
     <Bar id="ascents-chart" class="dark-bg" :options="chartOptions" :data="chartData" />
   </q-card>
