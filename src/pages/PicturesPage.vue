@@ -157,7 +157,6 @@ const spacing = computed(() => {
 })
 
 const imageGeometry = computed(() => {
-  console.log(rowHeight)
   if (!galleryContainer.value) {
     return {
       containerHeight: 0,
