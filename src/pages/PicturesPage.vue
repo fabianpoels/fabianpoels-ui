@@ -24,7 +24,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, getCurrentInstance } from 'vue'
+const gtag = getCurrentInstance().appContext.app.config.globalProperties.$gtag
 import { useQuasar } from 'quasar'
 const $q = useQuasar()
 import justifiedLayout from 'justified-layout'
@@ -136,6 +137,22 @@ function startFancybox(index) {
         left: [],
         middle: [],
         right: ['fullscreen', 'close'],
+      },
+    },
+    on: {
+      'Carousel.ready Carousel.settle': (fancybox) => {
+        const slide = fancybox.getSlide()
+        if (slide && slide.src) {
+          const name = slide.src.split('fabianpoels_')[1].split('.jpg')[0]
+          gtag.event(`view_image_${name}`, {})
+        }
+      },
+      'Carousel.click': (fancybox) => {
+        const slide = fancybox.getSlide()
+        if (slide && slide.src) {
+          const name = slide.src.split('fabianpoels_')[1].split('.jpg')[0]
+          gtag.event(`click_image_${name}`, {})
+        }
       },
     },
   })
