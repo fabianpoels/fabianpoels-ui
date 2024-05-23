@@ -1,5 +1,5 @@
 <template>
-  <div class="routes relative-position">
+  <div class="routes relative-position q-pt-md">
     <q-separator dark />
     <q-expansion-item icon="fa-solid fa-filter" label="Filter">
       <div class="q-my-md">

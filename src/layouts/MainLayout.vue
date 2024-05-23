@@ -1,22 +1,17 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header id="header" class="bg-dark-page q-px-lg">
-      <div id="nav">
-        <router-link :to="{ name: 'pictures' }" class="q-mr-lg">
-          <q-icon
-            name="fa-solid fa-camera"
-            size="xl"
-            class="nav-icon"
-            :class="{ small: $q.screen.lt.sm }"
-          />
-        </router-link>
-        <router-link :to="{ name: 'routes' }" class="q-mr-lg">
+    <q-header elevated id="header" class="bg-dark-page q-px-lg">
+      <q-tabs align="left">
+        <q-route-tab :to="{ name: 'pictures' }">
+          <q-icon name="fa-solid fa-camera" size="xl" class="nav-icon" />
+        </q-route-tab>
+        <q-route-tab :to="{ name: 'routes' }">
           <q-icon name="fa-solid fa-mountain" size="xl" class="nav-icon" />
-        </router-link>
-        <router-link :to="{ name: 'cv' }" class="q-mr-lg">
+        </q-route-tab>
+        <q-route-tab :to="{ name: 'cv' }">
           <q-icon name="fa-solid fa-code" size="xl" class="nav-icon" />
-        </router-link>
-      </div>
+        </q-route-tab>
+      </q-tabs>
     </q-header>
     <q-page-container>
       <router-view />
