@@ -1,15 +1,15 @@
 <template>
   <q-layout view="hHh lpR fFf">
-    <q-header elevated id="header" class="bg-dark-page q-px-lg">
+    <q-header elevated id="header" class="bg-dark-page">
       <q-tabs align="left">
         <q-route-tab :to="{ name: 'pictures' }">
-          <q-icon name="fa-solid fa-camera" size="xl" class="nav-icon" />
+          <q-icon name="fa-solid fa-camera" size="lg" class="nav-icon" />
         </q-route-tab>
         <q-route-tab :to="{ name: 'routes' }">
-          <q-icon name="fa-solid fa-mountain" size="xl" class="nav-icon" />
+          <q-icon name="fa-solid fa-mountain" size="lg" class="nav-icon" />
         </q-route-tab>
         <q-route-tab :to="{ name: 'cv' }">
-          <q-icon name="fa-solid fa-code" size="xl" class="nav-icon" />
+          <q-icon name="fa-solid fa-code" size="lg" class="nav-icon" />
         </q-route-tab>
       </q-tabs>
     </q-header>
@@ -38,18 +38,9 @@ defineOptions({
 </script>
 <style>
 #header {
-  height: 110px;
+  height: 90px;
   display: flex;
-  justify-content: space-between;
-}
-
-#nav {
-  display: flex;
-  align-items: center;
-}
-
-#links {
-  padding-top: 35px;
+  /* justify-content: center; */
 }
 
 #footer {
