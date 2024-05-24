@@ -1,3 +1,7 @@
+import PicturesPage from 'pages/PicturesPage.vue'
+import RoutesPage from 'pages/RoutesPage.vue'
+import CvPage from 'pages/CvPage.vue'
+
 const routes = [
   {
     path: '/',
@@ -5,9 +9,9 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     redirect: { name: 'pictures' },
     children: [
-      { path: '', name: 'pictures', component: () => import('pages/PicturesPage.vue') },
-      { path: 'routes', name: 'routes', component: () => import('pages/RoutesPage.vue') },
-      { path: 'cv', name: 'cv', component: () => import('pages/CvPage.vue') },
+      { path: '', name: 'pictures', component: PicturesPage },
+      { path: 'routes', name: 'routes', component: RoutesPage },
+      { path: 'cv', name: 'cv', component: CvPage },
     ],
   },
 
