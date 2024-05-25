@@ -42,6 +42,7 @@
         <td class="route-style">{{ ascent.style }}</td>
       </tr>
     </table>
+    <q-inner-loading :showing="loading" dark />
   </div>
 </template>
 
