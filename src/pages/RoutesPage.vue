@@ -29,19 +29,22 @@
       <ascents-chart />
     </q-expansion-item>
     <q-separator dark class="q-mb-md" />
+
     <table class="q-mb-lg">
       <tr v-for="ascent in ascentStore.filteredAscents" :key="ascent.number">
         <td class="flag-cell">
           <div :class="`flag fi fis fi-${ascent.countryCode}`" />
         </td>
-        <td class="route-location">
-          {{ compileLocation(ascent) }}
+        <td class="route-details">
+          <div class="route-location">{{ compileLocation(ascent) }}</div>
+          <div class="route-name q-pr-sm">{{ ascent.name }}</div>
         </td>
-        <td>{{ ascent.name }}</td>
+        <td class="route-name">{{ ascent.name }}</td>
         <td class="route-grade">{{ ascent.grade }}</td>
         <td class="route-style">{{ ascent.style }}</td>
       </tr>
     </table>
+
     <q-inner-loading :showing="loading" dark />
   </div>
 </template>
@@ -115,12 +118,42 @@ function isPresent(str) {
 }
 
 /* SPORT CLIMBING */
+.route-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.route-details > .route-name {
+  display: none;
+}
+
 .route-location {
   font-size: 90%;
   opacity: 90%;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 650px) {
+  .route-details {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .route-name {
+    display: none;
+  }
+
+  .route-details > .route-name {
+    display: flex;
+  }
+
+  .route-location {
+    font-size: 80%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
   .routes {
     width: 100%;
     margin: auto;
@@ -130,19 +163,6 @@ function isPresent(str) {
     padding-left: 10px;
     padding-right: 10px;
     width: 100%;
-    font-size: 130%;
-  }
-}
-
-@media only screen and (max-width: 550px) {
-  .flag-cell {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .route-location {
-    display: none;
   }
 }
 </style>
