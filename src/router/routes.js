@@ -9,7 +9,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     redirect: { name: 'pictures' },
     children: [
-      { path: '', name: 'pictures', component: PicturesPage },
+      { path: 'pictures/:slug?', name: 'pictures', component: PicturesPage },
       { path: 'routes', name: 'routes', component: RoutesPage },
       { path: 'cv', name: 'cv', component: CvPage },
     ],

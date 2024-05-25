@@ -5,26 +5,32 @@
     :style="`position: relative; height: ${imageGeometry.containerHeight}px`"
     class="p-mb-lg"
   >
-    <q-resize-observer @resize="onResize" />
     <div
       class="item"
       v-for="(box, index) in imageGeometry.boxes"
       :key="index"
       :style="box.style"
-      @click="startFancybox(index)"
+      @click="$router.push({ name: 'pictures', params: { slug: box.image.slug } })"
     >
       <img
         :src="`images/${box.image.name}_thumb.jpg`"
         :alt="box.image.description"
         :width="box.width"
         :height="box.height"
+        @load="loadedImages++"
       />
     </div>
+    <q-resize-observer @resize="onResize" />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, getCurrentInstance } from 'vue'
+import { ref, computed, getCurrentInstance, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+const route = useRoute()
+const router = useRouter()
+import { useImageStore } from 'src/stores/imageStore'
+const imageStore = useImageStore()
 const gtag = getCurrentInstance().appContext.app.config.globalProperties.$gtag
 import { useQuasar } from 'quasar'
 const $q = useQuasar()
@@ -36,99 +42,43 @@ defineOptions({
   name: 'PicturesPage',
 })
 
-const images = [
-  {
-    name: 'fabianpoels_landscape_dolomites_storm',
-    description: 'Storm in the dolomites',
-    width: 809,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_climbing_finale_lubna',
-    description: "Lubna, Grotta dell'Edera, Finale (ITALY)",
-    width: 360,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_landscape_langkofel',
-    description: 'Langkofel, Dolomites (ITALY)',
-    width: 809,
-    height: 540,
-  },
-  { name: 'fabianpoels_landscape_airplane', description: 'Airplane', width: 360, height: 540 },
-  {
-    name: 'fabianpoels_landscape_val_badia',
-    description: 'Val Badia, Dolomites (ITALY)',
-    width: 809,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_climbing_cikola',
-    description: "Nina Landekar on 'Grenguar', Čikola (CROATIA)",
-    width: 809,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_landscape_krka',
-    description: 'Krka national park (CROATIA)',
-    width: 809,
-    height: 540,
-  },
-  { name: 'fabianpoels_landscape_frost', description: 'Frost', width: 361, height: 540 },
-  {
-    name: 'fabianpoels_landscape_lagodigarda',
-    description: 'Sunset on Lago di Garda (ITALY)',
-    width: 361,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_landscape_autumntrees',
-    description: 'Autumn trees',
-    width: 809,
-    height: 540,
-  },
-  { name: 'fabianpoels_portrait_italianguy', description: 'Italian guy', width: 809, height: 540 },
-  {
-    name: 'fabianpoels_climbing_finale_roccadicorno',
-    description: 'Rombo di Vento, Rocca di Corno, Finale (ITALY)',
-    width: 361,
-    height: 540,
-  },
-  { name: 'fabianpoels_landscape_lightning', description: 'Lightning', width: 808, height: 540 },
-  {
-    name: 'fabianpoels_climbing_lumignano_boomerang',
-    description: 'Cody Roth on Boomerang, Lumignano (ITALY)',
-    width: 361,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_portrait_lithuanian_girl',
-    description: 'Lithuanian girl',
-    width: 361,
-    height: 540,
-  },
-  { name: 'fabianpoels_landscape_rain', description: 'Rain', width: 808, height: 540 },
-  {
-    name: 'fabianpoels_climbing_menhir',
-    description: 'Thomas Prenn on Menhir, Passo Gardena, Dolomites (ITALY)',
-    width: 361,
-    height: 540,
-  },
-  {
-    name: 'fabianpoels_portrait_italianbride',
-    description: 'Italian bride',
-    width: 361,
-    height: 540,
-  },
-]
+const galleryContainer = ref(null)
+const width = ref(0)
+const loadedImages = ref(0)
+const fancyboxOpen = ref(false)
 
-const fancyboxImages = images.map((i) => ({
+const fancyboxImages = imageStore.images.map((i) => ({
   src: `images/${i.name}.jpg`,
   thumb: `images/${i.name}_thumb.jpg`,
   caption: i.description,
 }))
 
+watch(
+  () => route.params.slug,
+  (newSlug) => {
+    if (!newSlug || newSlug.length < 1) return
+    openImageBySlug(newSlug)
+  }
+)
+
+watch(loadedImages, async (val) => {
+  if (val < imageStore.images.length) return
+  const slug = route.params.slug
+  if (!slug || slug.length < 1) return
+  setTimeout(() => {
+    openImageBySlug(slug)
+  }, 500)
+})
+
+function openImageBySlug(slug) {
+  if (fancyboxOpen.value === true) return
+  const index = imageStore.images.findIndex((image) => image.slug === slug)
+  if (index < 0) return
+  startFancybox(index)
+}
+
 function startFancybox(index) {
+  fancyboxOpen.value = true
   new Fancybox(fancyboxImages, {
     startIndex: index,
     Thumbs: false,
@@ -140,11 +90,22 @@ function startFancybox(index) {
       },
     },
     on: {
-      'Carousel.ready Carousel.settle': (fancybox) => {
+      close: () => {
+        router.replace({ name: 'pictures' })
+        fancyboxOpen.value = false
+      },
+      'Carousel.selectSlide': (fancybox) => {
         const slide = fancybox.getSlide()
-        if (slide && slide.src) {
-          const name = slide.src.split('fabianpoels_')[1].split('.jpg')[0]
-          gtag.event(`view_image_${name}`, {})
+        if (!slide || !slide.src) return
+
+        // gtag
+        const name = slide.src.split('fabianpoels_')[1].split('.jpg')[0]
+        gtag.event(`view_image_${name}`, {})
+
+        // update url
+        const image = imageStore.images[fancybox.getSlide().index]
+        if (image.slug && route.params.slug !== image.slug) {
+          router.replace({ name: 'pictures', params: { slug: image.slug } })
         }
       },
       'Carousel.click': (fancybox) => {
@@ -158,10 +119,8 @@ function startFancybox(index) {
   })
 }
 
-const galleryContainer = ref(null)
-const width = ref(0)
-
 function onResize(val) {
+  if (val.width === 0 || val.height === 0 || val.width === width.value) return
   width.value = val.width
 }
 
@@ -180,14 +139,14 @@ const imageGeometry = computed(() => {
       boxes: [],
     }
   }
-  const geometry = justifiedLayout(images, {
+  const geometry = justifiedLayout(imageStore.images, {
     containerWidth: width.value,
     containerPadding: spacing.value,
     boxSpacing: spacing.value,
     targetRowHeight: rowHeight.value,
   })
   const boxes = geometry.boxes.map((element, index) => {
-    const image = images[index]
+    const image = imageStore.images[index]
     return {
       image: image,
       height: element.height,
