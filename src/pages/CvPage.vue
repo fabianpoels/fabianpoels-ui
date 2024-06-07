@@ -112,7 +112,16 @@
           <q-icon name="fa-brands fa-instagram" size="sm" class="link-icon" />
         </a>
       </q-timeline-entry>
-      <q-timeline-entry heading>Work experience</q-timeline-entry>
+      <q-timeline-entry heading>
+        Work experience
+        <q-btn
+          flat
+          rounded
+          dark
+          :icon="expand_work_experience ? 'expand_less' : 'expand_more'"
+          @click="expand_work_experience = !expand_work_experience"
+        />
+      </q-timeline-entry>
       <q-timeline-entry
         title="No-Q - Senior Fullstack Developer"
         subtitle="July 2021 - Present"
@@ -147,6 +156,7 @@
         </div>
       </q-timeline-entry>
       <q-timeline-entry
+        v-show="expand_work_experience"
         title="Sportoase Philipssite - Climbing gym operational manager"
         subtitle="SEPTEMBER 2011 - APRIL 2018"
       >
@@ -154,14 +164,26 @@
           Responsibility for the commercial, financial and practical operation of a climbing gym
         </div>
       </q-timeline-entry>
-      <q-timeline-entry title="Kivif / Bosk - High rope course instructor" subtitle="2011 - 2016" />
-      <q-timeline-entry title="D’Store - Process analyst" subtitle="2010 - 2012">
+      <q-timeline-entry
+        v-show="expand_work_experience"
+        title="Kivif / Bosk - High rope course instructor"
+        subtitle="2011 - 2016"
+      />
+      <q-timeline-entry
+        v-show="expand_work_experience"
+        title="D’Store - Process analyst"
+        subtitle="2010 - 2012"
+      >
         <div>
           Analyzing business processes to prepare the implementation of a fully automated stock
           management system
         </div>
       </q-timeline-entry>
-      <q-timeline-entry title="D’Store - Sales employee" subtitle="2010 - 2011" />
+      <q-timeline-entry
+        v-show="expand_work_experience"
+        title="D’Store - Sales employee"
+        subtitle="2010 - 2011"
+      />
       <q-timeline-entry
         title="Smartlounge / Kunstmaan - Junior Developer"
         subtitle="2010"
@@ -173,19 +195,40 @@
           as on small PoC’s for future projects
         </div>
       </q-timeline-entry>
-      <q-timeline-entry title="Several bars and venues - Waiter & bartender" subtitle="2005 - 2009">
+      <q-timeline-entry
+        v-show="expand_work_experience"
+        title="Several bars and venues - Waiter & bartender"
+        subtitle="2005 - 2009"
+      >
         <div>Student jobs in different bars</div>
       </q-timeline-entry>
-      <q-timeline-entry heading>Education</q-timeline-entry>
+      <q-timeline-entry heading>
+        Education
+        <q-btn
+          flat
+          rounded
+          dark
+          :icon="expand_education ? 'expand_less' : 'expand_more'"
+          @click="expand_education = !expand_education"
+        />
+      </q-timeline-entry>
       <q-timeline-entry
         title="KH Leuven / UCLL - Bachelor in applied informatics"
         subtitle="2007 - 2010 / 2017 - 2018"
         icon="fa-solid fa-graduation-cap"
       ></q-timeline-entry>
-      <q-timeline-entry title="KULeuven - Bachelor in physics" subtitle="2005 - 2007">
+      <q-timeline-entry
+        v-show="expand_education"
+        title="KULeuven - Bachelor in physics"
+        subtitle="2005 - 2007"
+      >
         <div>No degree</div>
       </q-timeline-entry>
-      <q-timeline-entry title="Sint-Pieterscollege - High School Degree" subtitle="1999-2005">
+      <q-timeline-entry
+        v-show="expand_education"
+        title="Sint-Pieterscollege - High School Degree"
+        subtitle="1999-2005"
+      >
         <div>General high school degree with focus on math and sciences</div>
       </q-timeline-entry>
       <q-timeline-entry heading>Other degrees</q-timeline-entry>
@@ -197,12 +240,15 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useQuasar } from 'quasar'
 const $q = useQuasar()
 defineOptions({
   name: 'CvPage',
 })
+
+const expand_work_experience = ref(false)
+const expand_education = ref(false)
 
 const layout = computed(() => {
   return $q.screen.lt.sm ? 'dense' : 'comfortable'
