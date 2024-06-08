@@ -113,14 +113,16 @@
         </a>
       </q-timeline-entry>
       <q-timeline-entry heading>
-        Work experience
         <q-btn
           flat
           rounded
           dark
-          :icon="expand_work_experience ? 'expand_less' : 'expand_more'"
+          size="xl"
+          :icon-right="expand_work_experience ? 'expand_less' : 'expand_more'"
           @click="expand_work_experience = !expand_work_experience"
-        />
+        >
+          Work experience
+        </q-btn>
       </q-timeline-entry>
       <q-timeline-entry
         title="No-Q - Senior Fullstack Developer"
@@ -203,20 +205,37 @@
         <div>Student jobs in different bars</div>
       </q-timeline-entry>
       <q-timeline-entry heading>
-        Education
         <q-btn
           flat
           rounded
           dark
-          :icon="expand_education ? 'expand_less' : 'expand_more'"
+          size="xl"
+          :icon-right="expand_education ? 'expand_less' : 'expand_more'"
           @click="expand_education = !expand_education"
-        />
+        >
+          Education
+        </q-btn>
       </q-timeline-entry>
       <q-timeline-entry
         title="KH Leuven / UCLL - Bachelor in applied informatics"
         subtitle="2007 - 2010 / 2017 - 2018"
         icon="fa-solid fa-graduation-cap"
       ></q-timeline-entry>
+      <q-timeline-entry
+        v-show="expand_education"
+        title="Sport Vlaanderen / VTS - Climbing instructor"
+        subtitle="2016"
+      />
+      <q-timeline-entry
+        v-show="expand_education"
+        title="Sport Vlaanderen / VTS - Snowboard instructor"
+        subtitle="2011"
+      />
+      <q-timeline-entry
+        v-show="expand_education"
+        title="Exponent - European rope course rescuer"
+        subtitle="2011"
+      />
       <q-timeline-entry
         v-show="expand_education"
         title="KULeuven - Bachelor in physics"
@@ -231,10 +250,6 @@
       >
         <div>General high school degree with focus on math and sciences</div>
       </q-timeline-entry>
-      <q-timeline-entry heading>Other degrees</q-timeline-entry>
-      <q-timeline-entry title="Sport Vlaanderen / VTS - Climbing instructor" subtitle="2016" />
-      <q-timeline-entry title="Sport Vlaanderen / VTS - Snowboard instructor" subtitle="2011" />
-      <q-timeline-entry title="Exponent - European rope course rescuer" subtitle="2011" />
     </q-timeline>
   </div>
 </template>
