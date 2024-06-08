@@ -4,6 +4,13 @@ export const useImageStore = defineStore('image', {
   state: () => ({
     images: [
       {
+        name: 'fabianpoels_landscape_dolomites_langkofel_clouds',
+        slug: 'landscape-dolomites-langkofel-clouds',
+        description: 'Langkofel in the clouds, Dolomites (ITALY)',
+        width: 809,
+        height: 540,
+      },
+      {
         name: 'fabianpoels_landscape_dolomites_storm',
         slug: 'landscape-dolomites-storm',
         description: 'Storm in the dolomites',
