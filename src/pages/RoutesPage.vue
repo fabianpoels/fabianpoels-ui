@@ -1,5 +1,12 @@
 <template>
   <div class="routes relative-position q-pt-md">
+    <q-btn
+      v-if="authStore.authenticated"
+      icon="add"
+      label="Add ascent"
+      class="q-my-md"
+      @click="showAddAscent = true"
+    />
     <q-separator dark />
     <q-expansion-item icon="fa-solid fa-filter" label="Filter">
       <div class="q-my-md">
@@ -46,6 +53,8 @@
     </table>
 
     <q-inner-loading :showing="loading" dark />
+
+    <add-ascent v-model="showAddAscent" v-if="authStore.authenticated" />
   </div>
 </template>
 
@@ -53,15 +62,19 @@
 import { Notify } from 'quasar'
 import { onMounted, ref } from 'vue'
 import { useAscentStore } from '@/stores/ascentStore'
+import { useAuthStore } from '@/stores/authStore'
 const ascentStore = useAscentStore()
+const authStore = useAuthStore()
 
 import AscentsChart from '@/components/AscentsChart.vue'
+import AddAscent from '@/components/AddAscent.vue'
 
 defineOptions({
   name: 'RoutesPage',
 })
 
 const loading = ref(false)
+const showAddAscent = ref(false)
 
 onMounted(async () => {
   loading.value = true

@@ -12,6 +12,18 @@
           <q-icon name="fa-solid fa-code" size="lg" class="nav-icon" />
         </q-route-tab>
       </q-tabs>
+      <template v-if="loggedIn">
+        <q-space />
+        <q-btn flat icon="account_circle">
+          <q-menu fit>
+            <q-list>
+              <q-item clickable @click="logout" v-close-popup>
+                <q-item-section>Logout</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </template>
     </q-header>
     <q-page-container>
       <router-view />
@@ -29,8 +41,18 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useQuasar } from 'quasar'
-const $q = useQuasar()
+import { useAuthStore } from '@/stores/authStore'
+const authStore = useAuthStore()
+
+function logout() {
+  authStore.logout()
+}
+
+const loggedIn = computed(() => {
+  return authStore.authenticated
+})
 
 defineOptions({
   name: 'MainLayout',

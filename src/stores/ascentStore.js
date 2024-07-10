@@ -4,9 +4,10 @@ import { defineStore } from 'pinia'
 const grades = ['6a', '6a+', '6b', '6b+', '6c', '6c+', '7a', '7a+', '7b', '7b+', '7c', '7c+']
 const styles = ['redpoint', 'flash', 'onsight']
 
-export const useAscentStore = defineStore('report', {
+export const useAscentStore = defineStore('ascents', {
   state: () => ({
     ascents: [],
+    locations: [],
     stats: {
       allTime: true,
       year: 2024,
@@ -42,6 +43,41 @@ export const useAscentStore = defineStore('report', {
       const { data } = await api.get('/public/ascents')
       if (!Array.isArray(data)) return
       this.ascents = data.sort((a, b) => b.number - a.number)
+
+      const locations = []
+
+      this.ascents.forEach((a) => {
+        const location = locations.find((l) => l.crag === a.crag)
+        if (location) {
+          if (
+            location.country === a.country &&
+            location.area === a.area &&
+            location.city === a.city
+          ) {
+            if (!location.sectors.includes(a.sector)) location.sectors.push(a.sector)
+          } else {
+            console.log(`!!DUPLICATE: ${a.crag}`)
+            locations.push({
+              crag: a.crag,
+              country: a.country,
+              area: a.area,
+              city: a.city,
+              sectors: [a.sector],
+            })
+          }
+        } else {
+          locations.push({
+            crag: a.crag,
+            country: a.country,
+            area: a.area,
+            city: a.city,
+            sectors: [a.sector],
+          })
+        }
+      })
+
+      // console.table(locations)
+      this.locations = locations
     },
   },
 })

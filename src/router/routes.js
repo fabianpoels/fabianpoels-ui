@@ -12,6 +12,11 @@ const routes = [
       { path: 'pictures/:slug?', name: 'pictures', component: PicturesPage },
       { path: 'routes', name: 'routes', component: RoutesPage },
       { path: 'cv', name: 'cv', component: CvPage },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('pages/LoginPage.vue'),
+      },
     ],
   },
 
