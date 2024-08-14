@@ -1,7 +1,7 @@
 import api from '@/api'
 import { defineStore } from 'pinia'
 
-const grades = ['6a', '6a+', '6b', '6b+', '6c', '6c+', '7a', '7a+', '7b', '7b+', '7c', '7c+']
+const grades = ['6a', '6a+', '6b', '6b+', '6c', '6c+', '7a', '7a+', '7b', '7b+', '7c', '7c+', '8a']
 const styles = ['redpoint', 'flash', 'onsight']
 
 export const useAscentStore = defineStore('report', {
