@@ -23,8 +23,8 @@
           <q-icon name="fa-brands fa-js" size="lg" class="q-mr-lg">
             <q-tooltip class="text-body2">Javascript</q-tooltip>
           </q-icon>
-          <q-icon name="fa-brands fa-html5" size="lg" class="q-mr-lg">
-            <q-tooltip class="text-body2">HTML / CSS</q-tooltip>
+          <q-icon name="fa-brands fa-golang" size="lg" class="q-mr-lg">
+            <q-tooltip class="text-body2">Golang</q-tooltip>
           </q-icon>
         </div>
         <div class="q-mb-lg">
@@ -41,6 +41,14 @@
           </q-icon>
           <q-icon name="fa-brands fa-node" size="lg" class="q-mr-lg">
             <q-tooltip class="text-body2">NodeJS</q-tooltip>
+          </q-icon>
+        </div>
+        <div class="q-mb-lg">
+          <q-icon name="fa-brands fa-html5" size="lg" class="q-mr-lg">
+            <q-tooltip class="text-body2">HTML / CSS</q-tooltip>
+          </q-icon>
+          <q-icon name="fa-brands fa-bootstrap" size="lg" class="q-mr-lg">
+            <q-tooltip class="text-body2">Bootstrap</q-tooltip>
           </q-icon>
         </div>
         <div class="q-mb-lg">
