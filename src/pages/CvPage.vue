@@ -134,7 +134,7 @@
       </q-timeline-entry>
       <q-timeline-entry
         title="No-Q - Senior Fullstack Developer"
-        subtitle="July 2021 - Present"
+        subtitle="July 2021 - August 2024"
         icon="fa-solid fa-laptop-code"
       >
         <div>Developer on the centralized payment/checkout service (Rails - Mysql)</div>
