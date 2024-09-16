@@ -3,11 +3,19 @@
     <q-timeline dark :layout="layout" side="right" class="q-pa-md timeline">
       <q-timeline-entry title="Summary" icon="summarize">
         <div>
-          Thorough knowledge and affinity with modern day full-stack software/web development.
-          Interest in the latest emerging technologies and frameworks, always keen to learn
-          something new. Experience in an agile product team as lead developer, working both
-          remotely and on-site. Deciding about architectural directions, as well as low-level
-          application profiling.
+          <p>Seasoned full-stack developer with a penchant for scaling mountains and SaaS platforms alike. Armed with Ruby on Rails and Vue.js as my trusty ice axes, I've navigated the treacherous terrains of bootstrapped startups and distributed teams, always ready to pitch my tent in remote or on-site camps.</p>
+          <p>My developer's backpack is filled with:
+            <ul>
+              <li>A compass pointing towards complex problems and innovative solutions</li>
+              <li>A map of various programming languages and frameworks, with well-trodden paths in Ruby on Rails and Vue.js, and exciting trails blazed in Node.js, JavaScript, and Go</li>
+              <li>A Swiss Army knife for tackling architectural decisions and low-level application profiling</li>
+              <li>A field guide to the latest paradigms, technologies, and frameworks</li>
+              <li>A pair of binoculars for spotting scalability challenges, honed by supporting 10K+ daily active users on a SaaS platform</li>
+              <li>A GPS powered for minor expeditions into geospatial mapping (eg: Mapbox integrations)</li>
+              <li>An AI-enhanced telescope for peering into the future of technology integration</li>
+            </ul>
+          </p>
+          <p>When not scaling digital peaks, you'll find me conquering real ones, proving that my problem-solving skills work just as well at sea level as they do in the cloud. Ready to embark on the next expedition, be it in bytes or in nature!</p>
         </div>
       </q-timeline-entry>
       <q-timeline-entry title="Programming languages & frameworks" icon="fa-solid fa-code">
@@ -98,13 +106,28 @@
         </div>
       </q-timeline-entry>
       <q-timeline-entry title="Languages" icon="translate">
-        <ul>
-          <li>Dutch: native proficiency</li>
-          <li>French: full professional proficiency</li>
-          <li>English: full professional proficiency</li>
-          <li>German: limited working proficiency</li>
-          <li>Italian: limited working proficiency</li>
-        </ul>
+        <q-list dense>
+          <q-item>
+            <q-item-section avatar><div class="flag fi fis fi-nl" /></q-item-section>
+            <q-item-section>Dutch: native proficiency</q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section avatar><div class="flag fi fis fi-fr" /></q-item-section>
+            <q-item-section>French: full professional proficiency</q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section avatar><div class="flag fi fis fi-gb" /></q-item-section>
+            <q-item-section>English: full professional proficiency</q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section avatar><div class="flag fi fis fi-de" /></q-item-section>
+            <q-item-section>German: limited working proficiency</q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section avatar><div class="flag fi fis fi-it" /></q-item-section>
+            <q-item-section>Italian: limited working proficiency</q-item-section>
+          </q-item>
+        </q-list>
       </q-timeline-entry>
       <q-timeline-entry title="Links" icon="link">
         <a href="mailto://fabian@fabianpoels.com">
@@ -280,5 +303,11 @@ const layout = computed(() => {
 <style scoped>
 .timeline {
   font-size: 16px;
+}
+.flag {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border-radius: 50%;
 }
 </style>
