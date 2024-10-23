@@ -4,6 +4,13 @@ export const useImageStore = defineStore('image', {
   state: () => ({
     images: [
       {
+        name: 'fabianpoels_landscape_geisler',
+        slug: 'landscape-geisler-fog',
+        description: 'Geisler in the fog',
+        width: 361,
+        height: 540,
+      },
+      {
         name: 'fabianpoels_landscape_dolomites_storm',
         slug: 'landscape-dolomites-storm',
         description: 'Storm in the dolomites',
