@@ -17,7 +17,7 @@
       <router-view />
     </q-page-container>
     <div id="footer" class="bg-dark-page">
-      Copyright 2024 - hello@fabianpoels.com
+      Copyright 2025 - hello@fabianpoels.com
       <a href="https://www.instagram.com/fabianpoels/" target="_blank">
         <q-icon name="fa-brands fa-instagram" size="sm" class="link-icon" />
       </a>

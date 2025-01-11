@@ -9,7 +9,7 @@ export const useAscentStore = defineStore('report', {
     ascents: [],
     stats: {
       allTime: true,
-      year: 2024,
+      year: 2025,
     },
   }),
   getters: {
