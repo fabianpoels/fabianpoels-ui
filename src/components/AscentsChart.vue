@@ -51,8 +51,45 @@ const chartOptions = computed(() => {
         display: false,
       },
       tooltip: {
+        enabled: true,
+        usePointStyle: true,
+        displayColors: false,
         callbacks: {
-          label: (val) => `${val.dataset.label}: ${Math.abs(val.raw)}`,
+          title: (tooltipItems) => {
+            return tooltipItems[0].label
+          },
+          label: (context) => {
+            // Get unique datasets (only first half since data is duplicated)
+            const datasets = context.chart.data.datasets.slice(
+              0,
+              context.chart.data.datasets.length / 2
+            )
+            const dataIndex = context.dataIndex
+
+            // Calculate total and prepare labels
+            let total = 0
+            const labels = datasets.map((dataset) => {
+              const value = Math.abs(dataset.data[dataIndex])
+              total += value
+              // Create color box using Unicode block character
+              const colorBox = '■'
+              return {
+                // text: `${colorBox} ${dataset.label}: ${value}`,
+                text: `${dataset.label}: ${value}`,
+                color: dataset.backgroundColor,
+              }
+            })
+
+            // Return array with colored labels and total
+            return [...labels.map((item) => item.text), '', `Total: ${total}`]
+          },
+          labelColor: (context) => {
+            // Return white or transparent to prevent tooltip background color changes
+            return {
+              borderColor: 'transparent',
+              backgroundColor: 'transparent',
+            }
+          },
         },
       },
     },
