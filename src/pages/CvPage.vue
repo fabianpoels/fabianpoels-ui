@@ -3,19 +3,13 @@
     <q-timeline dark :layout="layout" side="right" class="q-pa-md timeline">
       <q-timeline-entry title="Summary" icon="summarize">
         <div>
-          <p>Seasoned full-stack developer with a penchant for scaling mountains and SaaS platforms alike. Armed with Ruby on Rails and Vue.js as my trusty ice axes, I've navigated the treacherous terrains of bootstrapped startups and distributed teams, always ready to pitch my tent in remote or on-site camps.</p>
-          <p>My developer's backpack is filled with:
-            <ul>
-              <li>A compass pointing towards complex problems and innovative solutions</li>
-              <li>A map of various programming languages and frameworks, with well-trodden paths in Ruby on Rails and Vue.js, and exciting trails blazed in Node.js, JavaScript, and Go</li>
-              <li>A Swiss Army knife for tackling architectural decisions and low-level application profiling</li>
-              <li>A field guide to the latest paradigms, technologies, and frameworks</li>
-              <li>A pair of binoculars for spotting scalability challenges, honed by supporting 10K+ daily active users on a SaaS platform</li>
-              <li>A GPS powered for minor expeditions into geospatial mapping (eg: Mapbox integrations)</li>
-              <li>An AI-enhanced telescope for peering into the future of technology integration</li>
-            </ul>
+          <p>
+            I'm an experienced fullstack engineer. Having developed, scaled and maintained multiple
+            SaaS projects, I'm always curious about emerging frameworks, languages and stacks. I'm
+            motivated by continuously learning, seeking out challenges and finding creative
+            solutions. When I'm not behind a computer screen, I like to venture out into the
+            mountains and go climbing, hiking or take pictures.
           </p>
-          <p>When not scaling digital peaks, you'll find me conquering real ones, proving that my problem-solving skills work just as well at sea level as they do in the cloud. Ready to embark on the next expedition, be it in bytes or in nature!</p>
         </div>
       </q-timeline-entry>
       <q-timeline-entry title="Programming languages & frameworks" icon="fa-solid fa-code">
@@ -241,6 +235,101 @@
           rounded
           dark
           size="xl"
+          :icon-right="expand_projects ? 'expand_less' : 'expand_more'"
+          @click="expand_projects = !expand_projects"
+        >
+          Projects
+        </q-btn>
+      </q-timeline-entry>
+      <template v-if="expand_projects">
+        <q-timeline-entry icon="fa-solid fa-laptop-code">
+          <template #title>
+            Almanac
+            <a href="https://almanac24.com" target="_blank">
+              <q-icon name="open_in_new" size="sm" class="link-icon" />
+            </a>
+          </template>
+          <div class="q-mb-md">
+            Intelligence-led platform for real-time updates on Lebanon’s political and security
+            landscape.
+          </div>
+          <div class="q-mb-md">
+            I designed, implemented and deployed the full stack of the proof of concept.
+          </div>
+          <div class="q-mb-md">
+            External API integrations:
+            <ul>
+              <li>Mapbox for map rendering</li>
+              <li>Google Maps Geocoding</li>
+              <li>Claude AI</li>
+            </ul>
+          </div>
+          <div class="q-mb-md">
+            Frontend:
+            <ul>
+              <li>VueJS</li>
+              <li>Quasar UI framework</li>
+              <li>Mapbox JS</li>
+            </ul>
+          </div>
+          <div class="q-mb-md">
+            Backend:
+            <ul>
+              <li>Go</li>
+              <li>Gin Web Framework</li>
+              <li>MongoDB</li>
+              <li>Redis</li>
+            </ul>
+          </div>
+        </q-timeline-entry>
+        <q-timeline-entry title="fabianpoels.com" icon="fa-solid fa-laptop-code">
+          <div class="q-mb-md">
+            My humble homepage with mainly static content (CV and pictures), with the exception of a
+            small NodeJS API for managing my climbing palmares.
+          </div>
+          <div class="q-mb-md">
+            Stack:
+            <ul>
+              <li>VueJS + Quasar UI framework</li>
+              <li>NodeJS</li>
+              <li>MongoDB</li>
+            </ul>
+          </div>
+          <div>
+            <a href="https://github.com/fabianpoels/fabianpoels-ui" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
+            <a href="https://github.com/fabianpoels/fabianpoels-api" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
+          </div>
+        </q-timeline-entry>
+        <q-timeline-entry title="Prelude POS" icon="fa-solid fa-laptop-code">
+          <div class="q-mb-md">
+            A proof-of-concept for a fully offline Point-Of-Sale, supporting hardware integration
+            with NFC and Id-card readers.
+          </div>
+          <div class="q-mb-md">
+            Stack:
+            <ul>
+              <li>VueJS</li>
+              <li>Electron</li>
+              <li>MongoDB</li>
+            </ul>
+          </div>
+          <div>
+            <a href="https://github.com/fabianpoels/prelude-pos" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
+          </div>
+        </q-timeline-entry>
+      </template>
+      <q-timeline-entry heading>
+        <q-btn
+          flat
+          rounded
+          dark
+          size="xl"
           :icon-right="expand_education ? 'expand_less' : 'expand_more'"
           @click="expand_education = !expand_education"
         >
@@ -295,6 +384,7 @@ defineOptions({
 
 const expand_work_experience = ref(false)
 const expand_education = ref(false)
+const expand_projects = ref(false)
 
 const layout = computed(() => {
   return $q.screen.lt.sm ? 'dense' : 'comfortable'
