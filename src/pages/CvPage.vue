@@ -150,13 +150,13 @@
         </q-btn>
       </q-timeline-entry>
       <q-timeline-entry
-        title="Covision Media - Senior Fullstack Engineer"
+        title="Covision Media - Fullstack Software Engineer"
         subtitle="February 2025 - Current"
         icon="fa-solid fa-laptop-code"
       >
       </q-timeline-entry>
       <q-timeline-entry
-        title="No-Q - Senior Fullstack Developer"
+        title="No-Q - Fullstack Developer"
         subtitle="July 2021 - August 2024"
         icon="fa-solid fa-laptop-code"
       >
