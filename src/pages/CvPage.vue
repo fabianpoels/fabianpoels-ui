@@ -149,11 +149,11 @@
           Work experience
         </q-btn>
       </q-timeline-entry>
-      <q-timeline-entry
-        title="Covision Media - Fullstack Software Engineer"
-        subtitle="February 2025 - Current"
-        icon="fa-solid fa-laptop-code"
-      >
+      <q-timeline-entry subtitle="February 2025 - Current" icon="fa-solid fa-laptop-code">
+        <template #title>
+          <a href="https://covisionmedia.ai" target="_blank">Covision Media</a> - Fullstack Software
+          Engineer
+        </template>
       </q-timeline-entry>
       <q-timeline-entry
         title="No-Q - Fullstack Developer"
@@ -250,10 +250,7 @@
       <template v-if="expand_projects">
         <q-timeline-entry icon="fa-solid fa-laptop-code">
           <template #title>
-            Almanac
-            <a href="https://almanac24.com" target="_blank">
-              <q-icon name="open_in_new" size="sm" class="link-icon" />
-            </a>
+            <a href="https://almanac24.com" target="_blank"> Almanac </a>
           </template>
           <div class="q-mb-md">
             Intelligence-led platform for real-time updates on Lebanon’s political and security
@@ -396,7 +393,12 @@ const layout = computed(() => {
   return $q.screen.lt.sm ? 'dense' : 'comfortable'
 })
 </script>
-<style scoped>
+<style scoped lang="scss">
+a {
+  color: $primary;
+  text-decoration: none;
+}
+
 .timeline {
   font-size: 16px;
 }
