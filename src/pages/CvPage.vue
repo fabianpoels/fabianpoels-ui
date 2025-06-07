@@ -151,12 +151,12 @@
       </q-timeline-entry>
       <q-timeline-entry subtitle="February 2025 - Current" icon="fa-solid fa-laptop-code">
         <template #title>
-          <a href="https://covisionmedia.ai" target="_blank">Covision Media</a> - Fullstack Software
-          Engineer
+          <a href="https://allsides.tech" target="_blank">ALLSIDES</a> (formerly Covision Media) -
+          Full Stack Software Engineer
         </template>
       </q-timeline-entry>
       <q-timeline-entry
-        title="No-Q - Fullstack Developer"
+        title="No-Q - Full Stack Software Engineer"
         subtitle="July 2021 - August 2024"
         icon="fa-solid fa-laptop-code"
       >
@@ -173,7 +173,7 @@
         </div>
       </q-timeline-entry>
       <q-timeline-entry
-        title="Vertical-life - Fullstack Developer"
+        title="Vertical-life - Full Stack Software Engineer"
         subtitle="May 2018 - June 2021"
         icon="fa-solid fa-laptop-code"
       >
