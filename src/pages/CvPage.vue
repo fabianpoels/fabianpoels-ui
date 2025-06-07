@@ -248,10 +248,7 @@
         </q-btn>
       </q-timeline-entry>
       <template v-if="expand_projects">
-        <q-timeline-entry icon="fa-solid fa-laptop-code">
-          <template #title>
-            <a href="https://almanac24.com" target="_blank"> Almanac </a>
-          </template>
+        <q-timeline-entry title="Almanac" icon="fa-solid fa-laptop-code">
           <div class="q-mb-md">
             Intelligence-led platform for real-time updates on Lebanon’s political and security
             landscape.
@@ -283,6 +280,20 @@
               <li>MongoDB</li>
               <li>Redis</li>
             </ul>
+          </div>
+          <div>
+            <a href="https://github.com/fabianpoels/almanac-api-go" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
+            <a href="https://github.com/fabianpoels/almanac-frontend" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
+            <a href="https://github.com/fabianpoels/almanac-news-service-go" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
+            <a href="https://github.com/fabianpoels/almanac-models" target="_blank">
+              <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
+            </a>
           </div>
         </q-timeline-entry>
         <q-timeline-entry title="fabianpoels.com" icon="fa-solid fa-laptop-code">
