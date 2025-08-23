@@ -186,9 +186,9 @@
           </div>
           <div class="q-mb-md">
             <div class="text-weight-bold">Infrastructure Innovation</div>
-            Designed and implemented reference image processing system across full data pipeline;
-            introduced event-driven architecture with message queue system and webhook integration
-            enabling client post-processing workflows
+            Built automated deployment system using MAAS and Ansible, significantly reducing
+            on-premise hardware setup times and ensuring consistent configuration across client
+            installations
           </div>
           <div class="q-mb-md">
             <div class="text-weight-bold">End-to-End Problem Solving</div>
