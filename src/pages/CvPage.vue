@@ -216,13 +216,13 @@
           </div>
           <div class="q-mb-md">
             <div class="text-weight-bold">Rapid Scale Engineering</div>
-            Architected performance optimizations enabling platform to scale from 3 clients to 3000+
-            locations within weeks, handling up to ~100K daily bookings at peak through API
-            optimization, custom SQL queries, and UI refactoring for large datasets
+            Architected performance optimizations enabling platform to scale from 3 to 3000+ clients
+            within weeks, handling up to ~100K daily bookings at peak through API optimization,
+            custom SQL queries, and UI refactoring for large datasets
           </div>
           <div class="q-mb-md">
             <div class="text-weight-bold">Critical Integration Leadership</div>
-            anaged incident response including payment debugging, fraud investigation support for
+            Managed incident response including payment debugging, fraud investigation support for
             German/Italian law enforcement, and performance troubleshooting across distributed
             systems
           </div>
