@@ -149,43 +149,142 @@
           Work experience
         </q-btn>
       </q-timeline-entry>
-      <q-timeline-entry subtitle="February 2025 - Current" icon="fa-solid fa-laptop-code">
+      <q-timeline-entry subtitle="February 2025 - Present" icon="fa-solid fa-laptop-code">
         <template #title>
-          <a href="https://allsides.tech" target="_blank">ALLSIDES</a> (formerly Covision Media) -
-          Full Stack Software Engineer
+          <div>
+            <a href="https://allsides.tech" target="_blank">ALLSIDES</a> (formerly Covision Media) -
+            Full-Stack Software Engineer
+          </div>
+          <div class="text-subtitle1">
+            Market-leading 3D scanning technology company serving Nike, Adidas, Amazon, Meta,
+            Zalando, and Inditex
+          </div>
         </template>
-      </q-timeline-entry>
-      <q-timeline-entry
-        title="No-Q - Full Stack Software Engineer"
-        subtitle="July 2021 - August 2024"
-        icon="fa-solid fa-laptop-code"
-      >
-        <div>Developer on the centralized payment/checkout service (Rails - Mysql)</div>
         <div>
-          Developer on No-Q, time-saving appointment and staff management software for medical
-          service providers (Rails - Vue - Sidekiq - MySQL)
-          <ul>
-            <li>Implementing API endpoints</li>
-            <li>Setting up integrations with external partners</li>
-            <li>Optimizing endpoints and queries for handling high-volume traffic</li>
-            <li>Incident handling</li>
-          </ul>
+          <div class="q-mb-md">
+            <span class="text-weight-bold">
+              Python, C++, TypeScript/Angular, Docker, AWS (S3, Lambda, API Gateway) </span
+            >, with focus on high-volume data processing and real-time system orchestration
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Core Product Development</div>
+            Built and maintained critical software infrastructure for enterprise 3D scanning
+            operations, including capturing software (Python), main controller orchestrating 150GB+
+            data processing pipelines, and centralized scanner management hub
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Client Partnership & Technical Leadership</div>
+            Serve as primary technical contact for major client Zalando, conducting weekly
+            performance evaluations and translating complex technical requirements into product
+            roadmap priorities
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">System Architecture & Integration</div>
+            Designed and implemented reference image processing system across full data pipeline;
+            introduced event-driven architecture with message queue system and webhook integration
+            enabling client post-processing workflows
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Infrastructure Innovation</div>
+            Designed and implemented reference image processing system across full data pipeline;
+            introduced event-driven architecture with message queue system and webhook integration
+            enabling client post-processing workflows
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">End-to-End Problem Solving</div>
+            Performed independent on-site technical interventions combining hardware and software
+            expertise; led incident response including data recovery and client communication
+          </div>
         </div>
       </q-timeline-entry>
-      <q-timeline-entry
-        title="Vertical-life - Full Stack Software Engineer"
-        subtitle="May 2018 - June 2021"
-        icon="fa-solid fa-laptop-code"
-      >
+      <q-timeline-entry subtitle="July 2021 - August 2024" icon="fa-solid fa-laptop-code">
+        <template #title>
+          <div>
+            <a href="https://www.no-q.info/" target="_blank">No-Q</a> - Full-Stack Software Engineer
+          </div>
+          <div class="text-subtitle1">
+            Capacity-oriented booking platform for pharmacy industry, scaling to 3000+ locations
+            during COVID-19 testing surge
+          </div>
+        </template>
         <div>
-          Lead developer on the Smart Climbing Gym-project, a SaaS climbing gym management suite
-          (Rails - Vue - MySQL - docker)
-          <ul>
-            <li>Implementing new user interfaces and functionality</li>
-            <li>Maintaining and expanding the ORM data model</li>
-            <li>Creating and updating API endpoints</li>
-            <li>Maintaining software stack and deployment pipelines</li>
-          </ul>
+          <div class="q-mb-md">
+            <span class="text-weight-bold"
+              >Ruby on Rails, Vue.js, MySQL, Sidekiq background processing</span
+            >, with focus on high-volume transaction processing and regulatory compliance
+            integrations
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Rapid Scale Engineering</div>
+            Architected performance optimizations enabling platform to scale from 3 clients to 3000+
+            locations within weeks, handling up to ~100K daily bookings at peak through API
+            optimization, custom SQL queries, and UI refactoring for large datasets
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Critical Integration Leadership</div>
+            anaged incident response including payment debugging, fraud investigation support for
+            German/Italian law enforcement, and performance troubleshooting across distributed
+            systems
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">High-Stakes Problem Solving</div>
+            Led end-to-end development of Stripe payment integration including data architecture,
+            webhook systems, and redundancy mechanisms; architected RKI institute integration for
+            official COVID test result certification with batch processing and QR code generation
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Foundation Team Member</div>
+            Contributed as core technical team member during company spinoff, helping establish
+            platform architecture that supported explosive growth from startup to enterprise scale
+          </div>
+        </div>
+      </q-timeline-entry>
+      <q-timeline-entry subtitle="May 2018 - June 2021" icon="fa-solid fa-laptop-code">
+        <template #title>
+          <div>
+            <a href="https://gym.vertical-life.info/" target="_blank">Vertical-Life</a> - Full-Stack
+            Software Engineer
+          </div>
+          <div class="text-subtitle1">
+            Digital service provider for climbing industry, leading development of profitable SaaS
+            platform
+          </div>
+        </template>
+        <div>
+          <div class="q-mb-md">
+            <span class="text-weight-bold"
+              >Ruby on Rails, Vue.js, MySQL, Sidekiq background processing</span
+            >, with emphasis on interactive web applications and payment processing integration
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Product Leadership</div>
+            Led Smart Climbing Gym platform serving 300+ climbing gyms (8x growth during tenure),
+            driving core revenue-generating product through feature development, performance
+            optimization, and reliability improvements
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Major Platform Modernization</div>
+            Architected and executed complete frontend migration from Rails templates to Vue.js,
+            including comprehensive UI redesign and API refactoring - significantly improving user
+            experience and development velocity
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Complex Feature Development</div>
+            Built sophisticated interactive tools from scratch including SVG-based gym layout
+            drawing tool and route-setting management system; developed comprehensive user/role
+            authorization system and integrated booking platform with payment processing
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Technical Mentorship</div>
+            Guided two engineering interns through calendar feature development, gaining first
+            formal mentoring experience while expanding platform capabilities
+          </div>
+          <div class="q-mb-md">
+            <div class="text-weight-bold">Cross-Functional Collaboration</div>
+            Integrated CRM platform (Braze) working directly with marketing team; contributed to
+            additional product initiatives including climbing results service and centralized URL
+            service POCs
+          </div>
         </div>
       </q-timeline-entry>
       <q-timeline-entry
