@@ -4,10 +4,10 @@ export const useImageStore = defineStore('image', {
   state: () => ({
     images: [
       {
-        name: 'fabianpoels_landscape_dolomites_langkofel_clouds',
-        slug: 'landscape-dolomites-langkofel-clouds',
-        description: 'Langkofel in the clouds, Dolomites (ITALY)',
-        width: 809,
+        name: 'fabianpoels_landscape_geisler',
+        slug: 'landscape-geisler-fog',
+        description: 'Geisler in the fog',
+        width: 361,
         height: 540,
       },
       {
@@ -105,13 +105,6 @@ export const useImageStore = defineStore('image', {
         name: 'fabianpoels_climbing_lumignano_boomerang',
         slug: 'climbing-lumignano-boomerang-italy-cody-roth',
         description: 'Cody Roth on Boomerang, Lumignano (ITALY)',
-        width: 361,
-        height: 540,
-      },
-      {
-        name: 'fabianpoels_portrait_lithuanian_girl',
-        slug: 'portrait-lithuanian-girl',
-        description: 'Lithuanian girl',
         width: 361,
         height: 540,
       },

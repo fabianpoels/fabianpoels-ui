@@ -18,7 +18,7 @@
             <q-slider
               v-model="ascentStore.stats.year"
               :min="2011"
-              :max="2024"
+              :max="2025"
               :step="1"
               snap
               :markers="1"
@@ -27,7 +27,7 @@
               :disable="ascentStore.stats.allTime"
             />
           </q-item-section>
-          <q-item-section side class="year">2024</q-item-section>
+          <q-item-section side class="year">2025</q-item-section>
         </q-item>
       </div>
     </q-expansion-item>

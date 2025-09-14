@@ -2,14 +2,14 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated id="header" class="bg-dark-page">
       <q-tabs align="left">
+        <q-route-tab :to="{ name: 'cv' }">
+          <q-icon name="fa-solid fa-code" size="lg" class="nav-icon" />
+        </q-route-tab>
         <q-route-tab :to="{ name: 'pictures' }">
           <q-icon name="fa-solid fa-camera" size="lg" class="nav-icon" />
         </q-route-tab>
         <q-route-tab :to="{ name: 'routes' }">
           <q-icon name="fa-solid fa-mountain" size="lg" class="nav-icon" />
-        </q-route-tab>
-        <q-route-tab :to="{ name: 'cv' }">
-          <q-icon name="fa-solid fa-code" size="lg" class="nav-icon" />
         </q-route-tab>
       </q-tabs>
       <template v-if="loggedIn">
@@ -29,7 +29,7 @@
       <router-view />
     </q-page-container>
     <div id="footer" class="bg-dark-page">
-      Copyright 2024 - hello@fabianpoels.com
+      Copyright 2025 - hello@fabianpoels.com
       <a href="https://www.instagram.com/fabianpoels/" target="_blank">
         <q-icon name="fa-brands fa-instagram" size="sm" class="link-icon" />
       </a>

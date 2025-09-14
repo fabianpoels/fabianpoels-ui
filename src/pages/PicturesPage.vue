@@ -13,7 +13,7 @@
       @click="$router.push({ name: 'pictures', params: { slug: box.image.slug } })"
     >
       <img
-        :src="`images/${box.image.name}_thumb.jpg`"
+        :src="`/images/${box.image.name}_thumb.jpg`"
         :alt="box.image.description"
         :width="box.width"
         :height="box.height"
@@ -48,8 +48,8 @@ const loadedImages = ref(0)
 const fancyboxOpen = ref(false)
 
 const fancyboxImages = imageStore.images.map((i) => ({
-  src: `images/${i.name}.jpg`,
-  thumb: `images/${i.name}_thumb.jpg`,
+  src: `/images/${i.name}.jpg`,
+  thumb: `/images/${i.name}_thumb.jpg`,
   caption: i.description,
 }))
 
