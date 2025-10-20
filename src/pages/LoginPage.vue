@@ -35,8 +35,6 @@ import { ref, computed } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
 const authStore = useAuthStore()
 import { alert } from '@/utils/alert'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
 
 defineOptions({
   name: 'LoginPage',

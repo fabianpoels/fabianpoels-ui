@@ -37,6 +37,8 @@ export const useAscentStore = defineStore('ascents', {
       if (state.stats.allTime) return state.ascents
       return state.ascents.filter((a) => a.year === state.stats.year)
     },
+    cities: (state) => [...new Set(state.locations.map((l) => l.city))].filter((c) => !!c),
+    countries: (state) => [...new Set(state.locations.map((l) => l.country))],
   },
   actions: {
     async fetchAscents() {
@@ -54,30 +56,37 @@ export const useAscentStore = defineStore('ascents', {
             location.area === a.area &&
             location.city === a.city
           ) {
-            if (!location.sectors.includes(a.sector)) location.sectors.push(a.sector)
+            if (a.sector && !location.sectors.includes(a.sector)) location.sectors.push(a.sector)
           } else {
             console.log(`!!DUPLICATE: ${a.crag}`)
             locations.push({
               crag: a.crag,
               country: a.country,
+              countryCode: a.countryCode,
               area: a.area,
               city: a.city,
-              sectors: [a.sector],
+              sectors: a.sector ? [a.sector] : [],
             })
           }
         } else {
           locations.push({
             crag: a.crag,
             country: a.country,
+            countryCode: a.countryCode,
             area: a.area,
             city: a.city,
-            sectors: [a.sector],
+            sectors: a.sector ? [a.sector] : [],
           })
         }
       })
 
       // console.table(locations)
       this.locations = locations
+    },
+
+    async addAscent(ascent) {
+      console.log(ascent)
+      const { data } = await api.post('/admin/ascent', { ...ascent })
     },
   },
 })
