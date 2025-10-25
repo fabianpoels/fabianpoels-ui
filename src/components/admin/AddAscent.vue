@@ -160,6 +160,7 @@ async function addAscent() {
     const a = { ...ascent.value }
     if (Number.isInteger(a.crag.value)) a.crag = a.crag.label
     await ascentStore.addAscent(a)
+    alert.success('Ascent added')
     show.value = false
   } catch (e) {
     console.error(e)

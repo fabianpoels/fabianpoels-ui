@@ -85,7 +85,6 @@ export const useAscentStore = defineStore('ascents', {
     },
 
     async addAscent(ascent) {
-      console.log(ascent)
       const { data } = await api.post('/admin/ascent', { ...ascent })
     },
   },
