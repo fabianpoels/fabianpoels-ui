@@ -80,7 +80,48 @@ export const useAscentStore = defineStore('ascents', {
         }
       })
 
-      // console.table(locations)
+      this.locations = locations
+    },
+
+    async fetchAdminAscents() {
+      const { data } = await api.get('/admin/ascents')
+      if (!Array.isArray(data)) return
+      this.ascents = data.sort((a, b) => b.number - a.number)
+
+      const locations = []
+
+      this.ascents.forEach((a) => {
+        const location = locations.find((l) => l.crag === a.crag)
+        if (location) {
+          if (
+            location.country === a.country &&
+            location.area === a.area &&
+            location.city === a.city
+          ) {
+            if (a.sector && !location.sectors.includes(a.sector)) location.sectors.push(a.sector)
+          } else {
+            console.log(`!!DUPLICATE: ${a.crag}`)
+            locations.push({
+              crag: a.crag,
+              country: a.country,
+              countryCode: a.countryCode,
+              area: a.area,
+              city: a.city,
+              sectors: a.sector ? [a.sector] : [],
+            })
+          }
+        } else {
+          locations.push({
+            crag: a.crag,
+            country: a.country,
+            countryCode: a.countryCode,
+            area: a.area,
+            city: a.city,
+            sectors: a.sector ? [a.sector] : [],
+          })
+        }
+      })
+
       this.locations = locations
     },
 
