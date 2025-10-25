@@ -29,9 +29,14 @@
           </div>
         </q-td>
       </template>
+      <template #body-cell-actions="props">
+        <q-td :props="props">
+          <q-btn outline flat square icon="edit" size="sm" />
+        </q-td>
+      </template>
     </q-table>
 
-    <add-ascent v-model="showAddAscent" v-if="authStore.authenticated" />
+    <add-ascent v-model="showAddAscent" />
   </div>
 </template>
 
@@ -52,7 +57,28 @@ defineOptions({
 const loading = ref(false)
 const showAddAscent = ref(false)
 
-const ascents = computed(() => ascentStore.ascents)
+const ascents = computed(() =>
+  ascentStore.ascents.map((a) => {
+    return {
+      ...a,
+      location: compileLocation(a),
+    }
+  })
+)
+
+function compileLocation(a) {
+  let result = ''
+  if (isPresent(a.area)) result = `${a.area} > `
+  if (isPresent(a.city)) result += `${a.city} > `
+  result += `${a.crag}`
+  if (isPresent(a.sector)) result += ` > ${a.sector}`
+  return result
+}
+
+function isPresent(str) {
+  return !!str && str.length > 0
+}
+
 const columns = ref([
   {
     name: 'number',
@@ -67,27 +93,9 @@ const columns = ref([
     sortable: true,
   },
   {
-    name: 'area',
-    label: 'area',
-    field: 'area',
-    sortable: true,
-  },
-  {
-    name: 'city',
-    label: 'city',
-    field: 'city',
-    sortable: true,
-  },
-  {
-    name: 'crag',
-    label: 'crag',
-    field: 'crag',
-    sortable: true,
-  },
-  {
-    name: 'sector',
-    label: 'sector',
-    field: 'sector',
+    name: 'location',
+    label: 'location',
+    field: 'location',
     sortable: true,
   },
   {
@@ -113,6 +121,11 @@ const columns = ref([
     label: 'date',
     field: 'date',
     sortable: true,
+  },
+  {
+    name: 'actions',
+    label: '',
+    sortable: false,
   },
 ])
 
