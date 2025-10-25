@@ -404,7 +404,8 @@
             Stack:
             <ul>
               <li>VueJS + Quasar UI framework</li>
-              <li>NodeJS</li>
+              <li>Go</li>
+              <li>Redis</li>
               <li>MongoDB</li>
             </ul>
           </div>
@@ -412,7 +413,7 @@
             <a href="https://github.com/fabianpoels/fabianpoels-ui" target="_blank">
               <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
             </a>
-            <a href="https://github.com/fabianpoels/fabianpoels-api" target="_blank">
+            <a href="https://github.com/fabianpoels/fabianpoels-api-go" target="_blank">
               <q-icon name="fa-brands fa-github" size="sm" class="link-icon" />
             </a>
           </div>
