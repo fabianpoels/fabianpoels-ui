@@ -235,7 +235,7 @@
           </div>
         </div>
       </q-timeline-entry>
-      <q-timeline-entry
+      <!-- <q-timeline-entry
         v-show="expand_work_experience"
         title="Sportoase Philipssite - Climbing gym operational manager"
         subtitle="SEPTEMBER 2011 - APRIL 2018"
@@ -263,7 +263,7 @@
         v-show="expand_work_experience"
         title="D’Store - Sales employee"
         subtitle="2010 - 2011"
-      />
+      /> -->
       <q-timeline-entry
         title="Smartlounge / Kunstmaan - Junior Developer"
         subtitle="2010"
