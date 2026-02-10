@@ -12,6 +12,21 @@ const routes = [
       { path: 'cv', name: 'cv', component: CvPage },
       { path: 'pictures/:slug?', name: 'pictures', component: PicturesPage },
       { path: 'routes', name: 'routes', component: RoutesPage },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('pages/LoginPage.vue'),
+      },
+      {
+        path: 'admin',
+        children: [
+          {
+            path: 'routes',
+            name: 'adminRoutes',
+            component: () => import('pages/admin/AdminRoutesPage.vue'),
+          },
+        ],
+      },
     ],
   },
 
