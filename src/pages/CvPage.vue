@@ -86,16 +86,7 @@
         </a>
       </q-timeline-entry>
       <q-timeline-entry heading>
-        <q-btn
-          flat
-          rounded
-          dark
-          size="xl"
-          :icon-right="expand_work_experience ? 'expand_less' : 'expand_more'"
-          @click="expand_work_experience = !expand_work_experience"
-        >
-          Work experience
-        </q-btn>
+        <q-btn flat rounded dark size="xl"> Work experience </q-btn>
       </q-timeline-entry>
       <q-timeline-entry subtitle="February 2025 - Present" icon="fa-solid fa-laptop-code">
         <template #title>
@@ -275,13 +266,13 @@
           as on small PoC’s for future projects
         </div>
       </q-timeline-entry>
-      <q-timeline-entry
+      <!-- <q-timeline-entry
         v-show="expand_work_experience"
         title="Several bars and venues - Waiter & bartender"
         subtitle="2005 - 2009"
       >
         <div>Student jobs in different bars</div>
-      </q-timeline-entry>
+      </q-timeline-entry> -->
       <q-timeline-entry heading>
         <q-btn
           flat
