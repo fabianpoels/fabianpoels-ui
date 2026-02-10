@@ -1,15 +1,14 @@
 import { boot } from 'quasar/wrappers'
-import VueGtag from 'vue-gtag'
+import { createGtag } from 'vue-gtag'
 
 export default boot(async ({ app, router }) => {
   app.use(
-    VueGtag,
-    {
+    createGtag({
       enabled: process.env.PROD,
-      config: {
-        id: import.meta.env.VITE_GTAG_ID,
+      tagId: import.meta.env.VITE_GTAG_ID,
+      pageTracker: {
+        router,
       },
-    },
-    router
+    })
   )
 })
