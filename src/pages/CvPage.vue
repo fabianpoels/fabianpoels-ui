@@ -256,6 +256,13 @@
         subtitle="2010 - 2011"
       /> -->
       <q-timeline-entry
+        title="Bonos - Freelance web developer"
+        subtitle="2014 - 2017"
+        icon="fa-solid fa-laptop-code"
+      >
+        <div>Worked on several small-scale websites, web applications and PoC’s</div>
+      </q-timeline-entry>
+      <q-timeline-entry
         title="Smartlounge / Kunstmaan - Junior Developer"
         subtitle="2010"
         icon="fa-solid fa-laptop-code"
