@@ -88,7 +88,15 @@
       <q-timeline-entry heading>
         <q-btn flat rounded dark size="xl"> Work experience </q-btn>
       </q-timeline-entry>
-      <q-timeline-entry subtitle="February 2025 - Present" icon="fa-solid fa-laptop-code">
+      <q-timeline-entry subtitle="August 2026 - Present" icon="fa-solid fa-laptop-code">
+        <template #title>
+          <div>
+            <a href="https://sensity.ai" target="_blank">Sensity.ai</a> - Senior Backend Engineer
+          </div>
+          <div class="text-subtitle1">Forensic Deepfake Detection</div>
+        </template>
+      </q-timeline-entry>
+      <q-timeline-entry subtitle="February 2025 - August 2026" icon="fa-solid fa-laptop-code">
         <template #title>
           <div>
             <a href="https://allsides.tech" target="_blank">ALLSIDES</a> (formerly Covision Media) -
